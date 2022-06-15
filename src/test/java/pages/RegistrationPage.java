@@ -12,15 +12,15 @@ public class RegistrationPage {
     @FindBy(name = "DateOfBirthDay")
     private WebElement dobDropdown;
 
-    public void selectGender(String gender){
-        if(gender.equalsIgnoreCase("Male")){
+    public void selectGender(String gender) {
+        if (gender.equalsIgnoreCase("Male")) {
             genderRadioButtons.get(0).click();
-        }else {
+        } else {
             genderRadioButtons.get(1).click();
         }
     }
 
-    public void selectDayOfBirth(String day){
+    public void selectDayOfBirth(String day) {
         Select select = new Select(dobDropdown);
         select.selectByVisibleText(day);
 
