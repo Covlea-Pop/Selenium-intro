@@ -1,7 +1,9 @@
 package pages;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
 import java.util.function.BooleanSupplier;
 
@@ -20,10 +22,16 @@ public class ContactPage {
     private WebElement emailInput;
 
     @FindBy(xpath = "//*[@id=\"Enquiry\"]")
-    private WebElement enquiryInput;
+    private WebElement enquiryTextArea;
 
     @FindBy(xpath = "/html/body/div[6]/div[3]/div/div/div/div[2]/form/div[2]/button")
     private WebElement submitButton;
+
+    public WebDriver driver;
+
+    public ContactPage(WebDriver driver){
+        PageFactory.initElements(driver, this);
+    }
 
 
     public void contact(String name, String email, String enquiry) {
@@ -31,7 +39,7 @@ public class ContactPage {
         assertEquals("Put your contact information here. You can edit this in the admin site.", msg);
         nameInput.sendKeys(name);
         emailInput.sendKeys(email);
-        emailInput.sendKeys(enquiry);
+        enquiryTextArea.sendKeys(enquiry);
         submitButton.click();
 
     }
