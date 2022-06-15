@@ -15,6 +15,8 @@ public class LoginPage {
 
     @FindBy(xpath = "//button[text()=\"Log in\"]")
     private WebElement loginButton;
+    @FindBy(xpath = "//*[contains(@class,'validation-summary-errors')]")
+    private WebElement errorMessage;
 
     public WebDriver driver;
 
@@ -27,6 +29,10 @@ public class LoginPage {
         emailInput.sendKeys(email);
         passwordInput.sendKeys(password);
         loginButton.click();
+    }
+
+    public String getErrorMessage(){
+        return errorMessage.getText();
     }
 
 }
