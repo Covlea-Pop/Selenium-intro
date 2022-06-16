@@ -38,7 +38,6 @@ public class LoginTest {
         assertEquals(accountpage.getLogOutLinkText(), "Log out");
 
 
-
     }
 
     @Test
@@ -49,7 +48,6 @@ public class LoginTest {
         loginPage.loginAs("vrajeala@mailnesia.com", "wrongpass");
         assertEquals(loginPage.getErrorMessage(), "Login was unsuccessful. Please correct the errors and try again.\n" +
                 "The credentials provided are incorrect");
-
 
 
     }
@@ -64,8 +62,9 @@ public class LoginTest {
 
     }
 
+
     @AfterEach
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 }
