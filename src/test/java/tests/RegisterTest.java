@@ -8,6 +8,9 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import pages.ConfirmPage;
 import pages.RegistrationPage;
 
+import java.lang.reflect.Array;
+import java.util.Arrays;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegisterTest {
@@ -134,6 +137,12 @@ public class RegisterTest {
         registrationPage.register();
         Thread.sleep(2000);
 
+    }
+    @Test
+
+    public void cannotRegisterWithEmptyFiels(){
+        registrationPage.register();
+        assertEquals(registrationPage.getErrorMessages(), Arrays.asList("First name is required.","Last name is required.","Email is required.","Password is required.","Password is required."));
     }
 
 

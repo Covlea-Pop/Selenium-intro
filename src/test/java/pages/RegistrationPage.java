@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RegistrationPage {
@@ -33,12 +34,14 @@ public class RegistrationPage {
     private WebElement confirmPasswordInput;
     @FindBy(id = "register-button")
     private WebElement registerButton;
-    @FindBy(xpath = "/html/body/div[6]/div[3]/div/div/div/div[2]/form/div[1]/ul/li")
+    @FindBy(xpath = "//div[contains(@class,\"validation-summary-errors\")]//li")
     private WebElement errorMessage;
     @FindBy(id = "Password-error")
     private WebElement errorMessage2;
     @FindBy(id = "Email-error")
     private WebElement errorMessage3;
+    @FindBy(xpath = "//span[@class=\"field-validation-error\"]/span")
+    private List<WebElement> errorMessages;
 
 
     public void selectGender(String gender) {
@@ -102,8 +105,16 @@ public class RegistrationPage {
 
 
 }
+public List<String> getErrorMessages(){
+        List<String> errors = new ArrayList<>();
+        for ( WebElement errorMessage: errorMessages){
+            errors.add(errorMessage.getText());
+        }
+        return errors;
+}
 public String getErrorMessage3(){
         return errorMessage3.getText();
 }
+
 }
 
