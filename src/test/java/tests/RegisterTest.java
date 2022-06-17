@@ -9,8 +9,12 @@ import pages.ConfirmPage;
 import pages.RegistrationPage;
 
 import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Arrays;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.contains;
+import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class RegisterTest {
@@ -143,7 +147,9 @@ public class RegisterTest {
     public void cannotRegisterWithEmptyFiels(){
         registrationPage.register();
         assertEquals(registrationPage.getErrorMessages(), Arrays.asList("First name is required.","Last name is required.","Email is required.","Password is required.","Password is required."));
+        assertThat(registrationPage.getErrorMessages(), equalTo(Arrays.asList("First name is required.","Last name is required.","Email is required.","Password is required.","Password is required.")));
     }
+
 
 
     @AfterEach
