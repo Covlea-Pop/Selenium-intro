@@ -96,8 +96,30 @@ public class RegisterTest {
 
     }
 
+    @Test
+    public void cannotLoginWithSpecialCharterInInputFields() throws InterruptedException {
+        Thread.sleep(2000);
+        registrationPage.selectGender("Male");
+        Thread.sleep(2000);
+        registrationPage.personalDetails("@", "@", "test123@gmail.com",
+                "@", "123456", "123456");
+        Thread.sleep(2000);
+        registrationPage.selectDayOfBirth("5");
+        Thread.sleep(2000);
+        registrationPage.selectMonthOfBirth("March");
+        Thread.sleep(2000);
+        registrationPage.selectYearOfBirth("1980");
+        Thread.sleep(2000);
+        registrationPage.newsLetter();
+        Thread.sleep(2000);
+        registrationPage.register();
+        Thread.sleep(2000);
+    }
+
+
     @AfterEach
     public void tearDown() {
         driver.quit();
     }
 }
+
