@@ -52,7 +52,7 @@ public class RegisterTest {
     }
     @Test
 
-    public void cannotLoginWithSameEmail() throws InterruptedException {
+    public void cannotRegisterWithSameEmail() throws InterruptedException {
         Thread.sleep(2000);
         registrationPage.selectGender("Male");
         Thread.sleep(2000);
@@ -97,7 +97,7 @@ public class RegisterTest {
     }
 
     @Test
-    public void cannotLoginWithSpecialCharterInInputFields() throws InterruptedException {
+    public void cannotRegisterWithSpecialCharterInInputFields() throws InterruptedException {
         Thread.sleep(2000);
         registrationPage.selectGender("Male");
         Thread.sleep(2000);
@@ -114,6 +114,26 @@ public class RegisterTest {
         Thread.sleep(2000);
         registrationPage.register();
         Thread.sleep(2000);
+    }
+    @Test
+    public void cannotRegisterWithInvalidEmail() throws InterruptedException {
+        Thread.sleep(2000);
+        registrationPage.selectGender("Male");
+        Thread.sleep(2000);
+        registrationPage.personalDetails("cosmin", "cosmin", "abc.def@mail.c",
+                "Endava", "123456", "123456");
+        Thread.sleep(2000);
+        registrationPage.selectDayOfBirth("5");
+        Thread.sleep(2000);
+        registrationPage.selectMonthOfBirth("March");
+        Thread.sleep(2000);
+        registrationPage.selectYearOfBirth("1980");
+        Thread.sleep(2000);
+        registrationPage.newsLetter();
+        Thread.sleep(2000);
+        registrationPage.register();
+        Thread.sleep(2000);
+
     }
 
 

@@ -37,6 +37,8 @@ public class RegistrationPage {
     private WebElement errorMessage;
     @FindBy(id = "Password-error")
     private WebElement errorMessage2;
+    @FindBy(id = "Email-error")
+    private WebElement errorMessage3;
 
 
     public void selectGender(String gender) {
@@ -97,6 +99,11 @@ public class RegistrationPage {
     public String getErrorMessage2(){
         return errorMessage2.getText();
 
+
+
+}
+public String getErrorMessage3(){
+        return errorMessage3.getText();
 }
 }
 
