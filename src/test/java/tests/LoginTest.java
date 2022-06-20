@@ -12,6 +12,8 @@ import pages.LoginPage;
 
 import java.sql.Time;
 
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.is;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class LoginTest {
@@ -48,6 +50,8 @@ public class LoginTest {
         loginPage.loginAs("vrajeala@mailnesia.com", "wrongpass");
         assertEquals(loginPage.getErrorMessage(), "Login was unsuccessful. Please correct the errors and try again.\n" +
                 "The credentials provided are incorrect");
+        assertThat(loginPage.getErrorMessage(), is("Login was unsuccessful. Please correct the errors and try again.\\n\" +\n" +
+                "                \"The credentials provided are incorrect"));
 
 
     }
