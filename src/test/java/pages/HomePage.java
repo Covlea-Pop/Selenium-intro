@@ -11,6 +11,8 @@ import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 
 public class HomePage {
+    @FindBy(xpath = "/html/body/div[6]/div[2]/ul[1]/li[7]/a")
+    private WebElement giftCardButton;
     @FindBy(xpath = "/html/body/div[6]/div[3]/div/div/div/div/div[4]/div[2]/div[2]/div/div[2]/div[3]/div[2]/button[1]")
     private WebElement addToCartButton;
 
@@ -35,6 +37,10 @@ public class HomePage {
     public ProductDetailPage addToCartButton(){
         addToCartButton.click();
         return new ProductDetailPage(driver);
+    }
+    public GiftCardPage giftCardButton(){
+        giftCardButton.click();
+        return new GiftCardPage(driver);
     }
 
 }
